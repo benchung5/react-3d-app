@@ -81,8 +81,6 @@ function init() {
 
     initDebug();
 
-    initMouse();
-
     window.addEventListener('resize', onWindowResize, false);
 
 //-----------------------------------------------------------------------------//
@@ -154,36 +152,36 @@ function init() {
 
 //reflective ring and diamond
 //-----------------------------------------------//
-    var reflectionShader = THREE.ReflectionShader;
-    materialMetal = new CubeMat("textures/cube/Escher/", reflectionShader);
+    // var reflectionShader = THREE.ReflectionShader;
+    // materialMetal = new CubeMat("textures/cube/Escher/", reflectionShader);
 
-    var fresnelShader = THREE.FresnelShader;
-    materialDiamond = new CubeMat("textures/cube/Escher/", fresnelShader);
+    // var fresnelShader = THREE.FresnelShader;
+    // materialDiamond = new CubeMat("textures/cube/Escher/", fresnelShader);
 
-    var newMaterials = [
-        materialMetal,
-        materialDiamond
-    ];
+    // var newMaterials = [
+    //     materialMetal,
+    //     materialDiamond
+    // ];
     
-    requests.push(onepixLoadStaticJSONcustom('models/ring/ring.js', newMaterials, false, false, manager));
+    // requests.push(onepixLoadStaticJSONcustom('models/ring/ring.js', newMaterials, false, false, manager));
 
 //animated versions (load groundplane too)
 //-----------------------------------------------//
 
-//    $.when(
-//            onepixLoadSkinnedCOLLADA('models/tube/animated-tube.dae'),
-////            onepixLoadSkinnedJSON('models/tube/animated-tube.json'),
-//            onepixLoadStaticJSONcustom('models/ground/ground.json', undefined, false, true)
-//
-//            ).done(function (value1, value2) {
-//        //    alert('loaded' + value1);
-//        //    alert('loaded' + value2);
-//        allItemsLoaded();
-//    });
+   $.when(
+           onepixLoadSkinnedCOLLADA('models/tube/animated-tube.dae'),
+//            onepixLoadSkinnedJSON('models/tube/animated-tube.json'),
+           onepixLoadStaticJSONcustom('models/ground/ground.json', undefined, false, true)
+
+           ).done(function (value1, value2) {
+       //    alert('loaded' + value1);
+       //    alert('loaded' + value2);
+       allItemsLoaded();
+   });
     
 
-//    requests.push(onepixLoadSkinnedCOLLADA('models/tube/animated-tube.dae'));
-//    requests.push(onepixLoadStaticJSONcustom('models/ground/ground.json', undefined, false, true));
+   requests.push(onepixLoadSkinnedCOLLADA('models/tube/animated-tube.dae'));
+   requests.push(onepixLoadStaticJSONcustom('models/ground/ground.json', undefined, false, true));
     
 //if all items loaded
 //-----------------------------------------------// 
@@ -229,6 +227,10 @@ function init() {
     renderer.shadowMapType = THREE.PCFSoftShadowMap;
 
     container.appendChild(renderer.domElement);
+
+    //must init this after container.appendChild(renderer.domElement)
+    //because we need the canvas to be created first in order to ad mouseover events to it
+    initMouse(container);
     
 //-----------------------------------------------------------------------------//  
 //setup camara
@@ -303,9 +305,9 @@ function update() {
     requestAnimationFrame(update);
 
     //update onepix mouse tracking - manipulates the scene
-//    updateMouse();
+    updateMouse();
     //or use the three.js TrachballControls  manipulates the camera
-    cameraControls.update(delta);
+    //cameraControls.update(delta);
 
     updateAnimation(delta);
 

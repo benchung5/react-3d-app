@@ -1,7 +1,0 @@
-cd C:\Users\benja\react\react_3d_app
-
-to run:
-npm start
-
-to preview:
-http://localhost:3000/

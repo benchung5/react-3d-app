@@ -1,0 +1,75 @@
+<html>
+   <head>
+      <title>One Pixel Engine</title>
+      <meta name="Author" content="Ben Chung - benchung.com">
+      <link rel="stylesheet" type="text/css" media="all" href="css/normalize.css" />
+      <link rel="stylesheet" type="text/css" media="all" href="css/foundation.css" />
+      <link rel="stylesheet" type="text/css" media="all" href="css/media-queries.css" />
+      <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+      
+      <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+   </head>
+   <body>
+        <div class="row media-spacer-med">
+           <div class="medium-12 columns header">
+               <header>
+                   <h1>Header</h1>
+               </header>
+           </div>
+       </div>
+       <div class="row media-spacer-med">
+           <div class="medium-8 columns ">
+
+                   <div id="container">                     
+                   </div>
+
+           </div>
+           <div class="medium-4 columns col-right">
+               <div id="debug">
+                   <!--dynamically populated in javascript-->
+                   
+                           <h1></h1>
+        <ul id="numbers" style="display:none">
+        </ul>
+               </div>
+               <div class="sidebar-widget">
+                   <h3>Animations</h3>
+                   <div id="anmimation">
+                       <a id="start" href="javascript:void(0)">play</a>
+                       <a id="stop" href="javascript:void(0)">stop</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="clear"></div>
+
+      <!-- for some reason the latest three.js doesn't work, so we use the one from the example file-->
+      <script src="js/three.min.js"></script>
+      <!-- <script type="text/javascript" src="https://github.com/cujojs/when"></script> -->
+      <script type="text/javascript" src="js/stats.min.js"></script>
+      <script type="text/javascript" src="js/Detector.js"></script>
+      <script src="js/controls/TrackballControls.js"></script>
+      <script src="js/loaders/ColladaLoader.js"></script>
+      <script src="js/loaders/OBJLoader.js"></script>
+      <script src="js/shaders/FresnelShader.js"></script>
+      <script src="js/shaders/ReflectionShader.js"></script>
+      <script src="js/shaders/VertexColorShader.js"></script>
+      <script src="js/shaders/LavaShader.js"></script>
+      <script src="js/shaders/SimpleShader.js"></script>
+      <script src="js/shaders/DisplacementShader.js"></script>
+      <script src="js/heartcode-canvasloader-min.js"></script>
+      
+      <!-- load onepix scripts-->
+      <script src="OnepixDebug.js"></script>
+      <script src="js/controls/OnepixMouseTracking.js"></script>
+      <script src="OnepixMaterials.js"></script>
+      <script src="OnepixAnimation.js"></script>
+      <script src="OnepixLoaders.js"></script>
+      
+      <!--make sure this is loaded last-->
+      <script src="scene.js"></script> 
+      
+
+      
+   </body>
+</html>    
